@@ -81,12 +81,6 @@ Prints biomarker predictions per WSI using soft-voting over local/global outputs
 
 ---
 
-## 📄 Citation
-Based on:
-> "Predicting Genetic Markers for Brain Tumors Using a Composite Loss" — Arijit De et al. (2021)
-
----
-
 ## 🔜 Future Work
 - Add visualization & explainability (e.g., heatmaps)
 - Support for additional biomarkers
