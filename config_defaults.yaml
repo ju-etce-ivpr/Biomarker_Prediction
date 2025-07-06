@@ -1,0 +1,41 @@
+# Default config for training/testing
+
+# Dataset and patch info
+data:
+  wsi_dir: "./data/wsis"
+  patch_dir: "./data/patches"
+  metadata_csv: "./data/labels.csv"
+  patch_size: 224
+  local_patches_per_wsi: 2000
+  global_patches_per_wsi: 200
+  magnifications: [20, 5]
+  train_split: 0.7
+  val_split: 0.1
+  test_split: 0.2
+
+# Model params
+model:
+  backbone: "kimianet"           # feature extractor
+  dropout_rate: 0.1
+  num_biomarkers: 5
+  fcn_hidden_dims: [640, 256, 64]
+
+# Loss function weights
+loss:
+  alpha: 0.5    # ML-WCE
+  beta: 0.2     # Conditional Probability
+  gamma: 0.3    # Spectral Graph
+  spectral_energy_threshold: 0.9
+
+# Training hyperparameters
+train:
+  batch_size: 256
+  learning_rate: 0.0003
+  epochs: 200
+  optimizer: "adam"
+  save_dir: "./checkpoints"
+  log_interval: 10
+
+# Testing
+test:
+  soft_vote_weights: "modulated_rank"  # auto-set based on training accuracy
